@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\WeddingPackageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,19 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])
+Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
+
+
 Route::prefix('admin')
-    ->namespace('Admin')
+    ->middleware(['auth','admin'])
     ->group(function() {
         Route::get('/', [DashboardController::class, 'index'])
         ->name('dashboard');
+
+        Route::resource('wedding-package', WeddingPackageController::class);
     });
+
+
+Auth::routes(['verify' => true]);
