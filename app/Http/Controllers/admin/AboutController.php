@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\WeddingPackageRequest;
-use App\Models\WeddingPackage;
+use App\Http\Requests\Admin\AboutRequest;
+use App\Models\About;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 
-class WeddingPackageController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +18,11 @@ class WeddingPackageController extends Controller
      */
     public function index()
     {
-        $items = WeddingPackage::all();
-        return view('pages.admin.wedding-package.index',[
-                'items' => $items
-        ]);
+        $itemAbout = About::all();
 
-        
+        return view('pages.admin.about.index',[
+                'itemAbout' => $itemAbout
+        ]);
     }
 
     /**
@@ -33,7 +32,7 @@ class WeddingPackageController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.wedding-package.create');
+        return view('pages.admin.about.create');
     }
 
     /**
@@ -42,16 +41,15 @@ class WeddingPackageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(WeddingPackageRequest $request)
+    public function store(AboutRequest $request)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
         $data['image'] = $request->file('image')->store(
             'assets/gallery', 'public'
         );
 
-        WeddingPackage::create($data);
-        return redirect()->route('wedding-package.index');
+        About::create($data);
+        return redirect()->route('about.index');
 
     }
 
@@ -74,9 +72,9 @@ class WeddingPackageController extends Controller
      */
     public function edit($id)
     {
-        $item = WeddingPackage::findOrfail($id);
+        $item = About::findOrfail($id);
 
-        return view('pages.admin.wedding-package.edit' ,[
+        return view('pages.admin.about.edit' ,[
         'item' => $item,
         
         ]);
@@ -89,19 +87,18 @@ class WeddingPackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(WeddingPackageRequest $request, $id)
+    public function update(AboutRequest $request, $id)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
         $data['image'] = $request->file('image')->store(
             'assets/gallery', 'public'
         );
 
-        $item = WeddingPackage::findOrFail($id);
+        $item = About::findOrFail($id);
 
         $item->update($data);
 
-        return redirect()->route('wedding-package.index');
+        return redirect()->route('about.index');
     }
 
     /**
@@ -112,9 +109,9 @@ class WeddingPackageController extends Controller
      */
     public function destroy($id)
     {
-        $item = WeddingPackage::findOrFail($id);
+        $item = About::findOrFail($id);
         $item->delete();
 
-        return redirect()->route('wedding-package.index');
+        return redirect()->route('about.index');
     }
 }

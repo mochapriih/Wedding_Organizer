@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WeddingPackageRequest extends FormRequest
+class GalleryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,9 @@ class WeddingPackageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255',
-            'image' => 'required|image',
-            'description' => 'required|max:255',
-            'price' => 'required|integer'
+            
+            'image' => 'required|image'
+            
         ];
     }
 }

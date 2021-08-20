@@ -22,7 +22,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="{{ url('frontend/assets/img/navbar-logo.svg') }}" alt="..." /></a>
+                <a class="navbar-brand" href="#page-top"><img src="{{ url('frontend/assets/img/navbar-logo.svg') }}" alt="..." style="height: 40px"/></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -41,6 +41,7 @@
                         @auth
                         <form action="{{ url('logout') }}" method="POST">
                          @csrf
+                         
                          <button class="btn btn-outline-warning" type="submit">Logout</button>
                          </form>
                         @endauth

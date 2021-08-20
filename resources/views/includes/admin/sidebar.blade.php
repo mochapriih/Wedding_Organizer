@@ -27,16 +27,18 @@
 </li>
 
 <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="{{route ('about.index')}}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Tentang</span></a>
+</li>
+
+<li class="nav-item active">
+    <a class="nav-link" href="{{route ('gallery.index')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Galeri</span></a>
 </li>
 
-<li class="nav-item active">
-    <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>tentang</span></a>
-</li>
+
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

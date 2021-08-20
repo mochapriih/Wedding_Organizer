@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\WeddingPackage;
+use App\Models\About;
+use App\Models\Gallery;
 
 class HomeController extends Controller
 {
@@ -15,7 +18,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
-    }
+        $items = WeddingPackage::all();
+        $itemAbout = About::all();
+        $itemGallery = Gallery::all();
 
+        return view('pages.home',[
+                'items' => $items,
+                'itemAbout' => $itemAbout,
+                'itemGallery' => $itemGallery
+        ]);
+    }
+    
+    
 }
