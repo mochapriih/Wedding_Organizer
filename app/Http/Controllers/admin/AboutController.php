@@ -16,10 +16,14 @@ class AboutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $itemAbout = About::all();
-
+        if($request->has('search')){
+            $itemAbout = About::where('title', 'LIKE', '%'.$request->search.'%')
+            ->get();
+        }else{
+            $itemAbout = About::all();
+        }
         return view('pages.admin.about.index',[
                 'itemAbout' => $itemAbout
         ]);

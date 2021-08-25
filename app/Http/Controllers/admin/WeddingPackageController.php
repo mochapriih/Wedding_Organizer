@@ -16,9 +16,17 @@ class WeddingPackageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $items = WeddingPackage::all();
+        if($request->has('search')){
+            $items = WeddingPackage::where('title', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('price', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('description', 'LIKE', '%'.$request->search.'%')
+            ->get();
+        }else{
+            $items = WeddingPackage::all();
+        }
+        
         return view('pages.admin.wedding-package.index',[
                 'items' => $items
         ]);
@@ -117,4 +125,7 @@ class WeddingPackageController extends Controller
 
         return redirect()->route('wedding-package.index');
     }
+
+
+    
 }

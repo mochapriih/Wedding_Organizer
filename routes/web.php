@@ -32,7 +32,10 @@ Route::prefix('admin')
         Route::resource('wedding-package', WeddingPackageController::class);
         Route::resource('about', AboutController::class);
         Route::resource('gallery', GalleryController::class);
+
+        
     });
+
 
 
 Auth::routes(['verify' => true]);

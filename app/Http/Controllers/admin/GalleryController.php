@@ -16,9 +16,16 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $itemGallery = Gallery::all();
+
+        if($request->has('search')){
+            $itemGallery = Gallery::where('id', 'LIKE', '%'.$request->search.'%')
+            ->get();
+        }else{
+            $itemGallery = Gallery::all();
+        }
+        
 
         return view('pages.admin.gallery.index',[
                 'itemGallery' => $itemGallery
