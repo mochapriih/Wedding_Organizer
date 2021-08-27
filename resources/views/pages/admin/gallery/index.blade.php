@@ -70,8 +70,13 @@
                         @endforelse
                     
                     </tbody>
-
                 </table>   
+                    Halaman : {{ $itemGallery->currentPage() }} <br/>
+                    Jumlah Data : {{ $itemGallery->total() }} <br/>
+                    Data Per Halaman : {{ $itemGallery->perPage() }} <br/>
+                
+                    <br/>
+                    {{ $itemGallery->links() }} 
             </div>
         
         </div>

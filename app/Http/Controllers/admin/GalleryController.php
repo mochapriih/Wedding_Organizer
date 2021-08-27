@@ -21,9 +21,9 @@ class GalleryController extends Controller
 
         if($request->has('search')){
             $itemGallery = Gallery::where('id', 'LIKE', '%'.$request->search.'%')
-            ->get();
+            ->paginate(5);
         }else{
-            $itemGallery = Gallery::all();
+            $itemGallery = Gallery::paginate(5);
         }
         
 

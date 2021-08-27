@@ -22,9 +22,9 @@ class WeddingPackageController extends Controller
             $items = WeddingPackage::where('title', 'LIKE', '%'.$request->search.'%')
             ->orWhere('price', 'LIKE', '%'.$request->search.'%')
             ->orWhere('description', 'LIKE', '%'.$request->search.'%')
-            ->get();
+            ->paginate(5);
         }else{
-            $items = WeddingPackage::all();
+            $items = WeddingPackage::paginate(5);
         }
         
         return view('pages.admin.wedding-package.index',[

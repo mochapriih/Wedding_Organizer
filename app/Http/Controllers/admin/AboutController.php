@@ -20,9 +20,9 @@ class AboutController extends Controller
     {
         if($request->has('search')){
             $itemAbout = About::where('title', 'LIKE', '%'.$request->search.'%')
-            ->get();
+            ->paginate(5);
         }else{
-            $itemAbout = About::all();
+            $itemAbout = About::paginate(5);
         }
         return view('pages.admin.about.index',[
                 'itemAbout' => $itemAbout
