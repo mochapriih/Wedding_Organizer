@@ -1,4 +1,4 @@
-- atur .env dengan nama database / bisa import database .sql di dalam laravel
+- atur .env dengan nama database / bisa import database wedding-organizer.sql di dalam laravel
 - jalankan migrasi
 - untuk daftar user ketik /register
 - ubah default user menjadi admin setelah register di database untuk bisa masuk ke halaman admin
